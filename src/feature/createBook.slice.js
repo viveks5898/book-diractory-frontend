@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { axiosPost, axiosGet } from "../instance/axiosinstance";
+import { axiosPost } from "../instance/axiosinstance";
 const initialState = {
   data: [],
   error: false,
@@ -18,28 +18,8 @@ export const createBook = createAsyncThunk(
   }
 );
 
-export const getBooks = createAsyncThunk("bookSlice.getBook", async (data) => {
-  const res = await axiosGet("/getBooks");
-});
 
-const getBookSlice = createSlice({
-  name: "getBookSlice",
-  initialState,
-  extraReducers: {
-    [getBooks.pending]: (state) => {
-      state.error = false;
-    },
-    [getBooks.fulfilled]:(state, {payload})=>{
-      state.data = payload;
-      state.error = false
-    },
-    [getBooks.rejected] :(state) =>{
-     state.error = false
-    }
-  },
-});
-
-const createBookSlice = createSlice({
+ const createBookSlice = createSlice({
   name: "createBookSlice",
   initialState,
   extraReducers: {

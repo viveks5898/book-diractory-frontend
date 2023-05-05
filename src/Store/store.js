@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-
-import bookReducer from "../feature/Feature.slice";
-
+import getBookReducer from "../feature/getBook.slice";
+import bookReducer from '../feature/createBook.slice'
 const combineReducer = combineReducers({
   book: bookReducer,
+  getBooks:getBookReducer
 });
 
 const rootReducer = (state, action) => {
