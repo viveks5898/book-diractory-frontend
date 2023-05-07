@@ -5,11 +5,10 @@ const initialState = {
     error: false,
     loading: true,
   };
-  export const getBooks = createAsyncThunk("bookSlice.getBook", async (data) => {
-    const res = await axiosGet("/getBooks", data)
-    
-return res;  
-});
+  export const getBooks = createAsyncThunk("bookSlice/getBook", async () => {
+    const res = await axiosGet.get("/getBooks")
+    return res.data;
+    });
   
   const getBookSlice = createSlice({
     name: "getBookSlice",
